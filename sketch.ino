@@ -38,7 +38,7 @@ void loop()
 {
     if (switchConnected()) {
         if (!connected) {
-            delay(50); // Quick debounce
+            delay(1); // Quick debounce
         }
 
         connected = true;
@@ -46,9 +46,6 @@ void loop()
         delay(2);
     } else {
         connected = false;
-        Keyboard.press(KEY_F21);
-        delay(50);
-        Keyboard.release(KEY_F21);
         delay(500);
     }
 }
@@ -69,12 +66,12 @@ void readButton()
 
 boolean switchConnected()
 {
-    return digitalRead(connectedPin);
+    return !digitalRead(connectedPin);
 }
 
 boolean buttonPressed()
 {
-    return digitalRead(buttonPin);
+    return !digitalRead(buttonPin);
 }
 
 void failsafe()
