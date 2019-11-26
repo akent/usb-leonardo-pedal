@@ -1,12 +1,8 @@
 #include <Keyboard.h>
 
-// User Settings ------------
-const char key = KEY_F23;
-// --------------------------
 const int connectedPin = 9;
 const int buttonPin = 10;
 const int ledPin = 17;
-// --------------------------
 
 boolean connected = false;
 
@@ -38,7 +34,7 @@ void loop()
 {
     if (switchConnected()) {
         if (!connected) {
-            delay(1); // Quick debounce
+            delay(2); // Quick debounce
         }
 
         connected = true;
@@ -60,7 +56,15 @@ void readButton()
         return; // Nothing to see here, folks
     }
 
-    buttonState ? Keyboard.press(key) : Keyboard.release(key);
+    if (buttonState) {
+        Keyboard.press(KEY_ESC);
+        Keyboard.release(KEY_ESC);
+        Keyboard.press('a');
+        Keyboard.release('a');
+    } else {
+        Keyboard.press(KEY_ESC);
+        Keyboard.release(KEY_ESC);
+    }
     lastState = buttonState;
 }
 
