@@ -34,7 +34,7 @@ void loop()
 {
     if (switchConnected()) {
         if (!connected) {
-            delay(2); // Quick debounce
+            delay(5); // Quick debounce
         }
 
         connected = true;
@@ -51,6 +51,12 @@ void readButton()
     static boolean lastState = false;
 
     boolean buttonState = buttonPressed();
+
+    if (lastState == buttonState) {
+        return; // Nothing to see here, folks
+    }
+
+    buttonState = buttonPressed();
 
     if (lastState == buttonState) {
         return; // Nothing to see here, folks
