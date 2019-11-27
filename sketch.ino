@@ -65,11 +65,15 @@ void readButton()
     if (buttonState) {
         Keyboard.press(KEY_ESC);
         Keyboard.release(KEY_ESC);
-        Keyboard.press('a');
-        Keyboard.release('a');
+        Keyboard.press('i');
+        Keyboard.release('i');
     } else {
         Keyboard.press(KEY_ESC);
         Keyboard.release(KEY_ESC);
+        Keyboard.press('`');
+        Keyboard.release('`');
+        Keyboard.press('^');
+        Keyboard.release('^');
     }
     lastState = buttonState;
 }
